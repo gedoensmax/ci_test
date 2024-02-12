@@ -73,7 +73,7 @@ jobs:
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       working-directory: ./onnxruntime
-      run: >
+      run: |
         chmod +x ./build.sh
         ./build.sh --use_cuda --cmake_extra_defines "CMAKE_INSTALL_PREFIX=$PWD/../ort_install"
 
