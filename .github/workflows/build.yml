@@ -55,14 +55,19 @@ jobs:
       with:
         cuda: '12.3.2'
         method: "network"
+        non-cuda-sub-packages: '["libcublas", "libcufft", "libcurand"]'
+        sub-packages: '["nvcc", "nvtx", "cudart"]'
+
 
 
     - name: Install cudnn
       run: |
-        # wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-        # sudo dpkg -i cuda-keyring_1.1-1_all.deb
-        # sudo apt-get update
         sudo apt-get install -y cudnn9
+
+
+    - name: Install tensorrt
+      run: |
+        sudo apt-get install -y tensorrt-dev
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
@@ -85,6 +90,7 @@ jobs:
       run: >
         ./build.sh --use_cuda --cmake_extra_defines "CMAKE_INSTALL_PREFIX=$PWD/../ort_install" 
         --cuda_home=$CUDA_PATH --cudnn_home=$CUDA_PATH
+        --use_tensorrt --tensorrt_home =$CUDA_PATH
         
     - name: Archive ORT install folder
       uses: actions/upload-artifact@v4
