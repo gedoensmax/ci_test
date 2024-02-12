@@ -1,6 +1,6 @@
 # This starter workflow is for a CMake project running on multiple platforms. There is a different starter workflow if you just want a single platform.
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
-name: CMake on multiple platforms
+name: Run ONNX Runtime build
 
 on:
   push:
@@ -74,7 +74,8 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       working-directory: ./onnxruntime
       run: >
-        build.sh --use_cuda --cmake_extra_defines "CMAKE_INSTALL_PREFIX=$PWD/../ort_install"
+        chmod +x ./build.sh
+        ./build.sh --use_cuda --cmake_extra_defines "CMAKE_INSTALL_PREFIX=$PWD/../ort_install"
 
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4
