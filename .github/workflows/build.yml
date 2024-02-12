@@ -90,7 +90,7 @@ jobs:
       run: >
         ./build.sh --use_cuda --cmake_extra_defines "CMAKE_INSTALL_PREFIX=$PWD/../ort_install" 
         --cuda_home=$CUDA_PATH --cudnn_home=$CUDA_PATH
-        --use_tensorrt --tensorrt_home =$CUDA_PATH
+        --use_tensorrt --tensorrt_home=$CUDA_PATH
         
     - name: Archive ORT install folder
       uses: actions/upload-artifact@v4
