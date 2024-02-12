@@ -55,8 +55,8 @@ jobs:
       with:
         cuda: '12.3.2'
         method: "network"
-        non-cuda-sub-packages: '["libcublas", "libcufft", "libcurand", "libcusparse"]'
-        sub-packages: '["nvcc", "nvtx", "cudart"]'
+        # non-cuda-sub-packages: '["libcublas", "libcufft", "libcurand", "libcusparse"]'
+        # sub-packages: '["nvcc", "nvtx", "cudart"]'
 
 
 
