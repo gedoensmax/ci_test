@@ -60,14 +60,15 @@ jobs:
 
 
 
-    - name: Install cudnn
-      run: |
-        sudo apt-get install -y cudnn9
+    # - name: Install cudnn
+    #   run: |
+    #     sudo apt-get install -y cudnn9
 
 
     - name: Install tensorrt
       run: |
-        sudo apt-get install -y tensorrt-dev
+        sudo apt-get update
+        sudo apt-get install -y tensorrt
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
